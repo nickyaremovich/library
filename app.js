@@ -17,17 +17,38 @@ function addBookToLibrary(title, author, pages, read) {
 };
 
 // hardcode a couple books
-
 addBookToLibrary('The Count of Monte Cristo', 'Alexandre Dumas', 1232, true);
 addBookToLibrary('East of Eden', 'John Steinbeck', 607, true);
+
 // log to see library 
 console.log(library);
+const libraryContainer = document.querySelector('#library-container');
+/// render library function 
+function renderLibrary() {
+    libraryContainer.innerHTML = '';
 
-
-
+    library.forEach((book) => {
+        const bookCard = document.createElement('div');
+        bookCard.classList.add('book-card');
+        //attach crypto ID
+        bookCard.dataset.id = book.id;
+        //
+        bookCard.innerHTML = `
+        <h3>${book.title}</h3>
+        <p><strong>Author:</strong> ${book.author}</p>
+        <p><strong>Pages:</strong> ${book.pages}</p>
+        <p><strong>Status:</strong> ${book.read ? 'Read' : 'Not Read Yet'}</p>
+    `;
+    libraryContainer.appendChild(bookCard);
+    });
+};
+renderLibrary(library);
 
 
 // DOM elements
-const addBook = document.getElementById('add-book');
-// event listener to open book form. modal or side dialog?
-addBook.addEventListener('click', openForm());
+const addBook = document.getElementById('add-btn');
+
+// event listener to open book form. modal 
+addBook.addEventListener('click', () => {
+    console.log('Open add book form');
+});
