@@ -65,9 +65,6 @@ cancelButton.addEventListener('click', () => {
     dialog.close();
     bookForm.reset();
 });
-submit.addEventListener('click', () => {
-    dialog.close();
-});
 // hook up submit btn
 bookForm.addEventListener("submit", (e) => {
     e.preventDefault();
