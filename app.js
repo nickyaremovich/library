@@ -69,3 +69,18 @@ cancelButton.addEventListener('click', () => {
 submit.addEventListener('click', () => {
     dialog.close();
 });
+// hook up submit btn
+bookForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const title = titleInput.value;
+    const author = authorInput.value;
+    const pages = Number(pagesInput.value);
+    const read = readInput.checked;
+    // call addBookToLibrary
+    addBookToLibrary(title, author, pages, read);
+    renderLibrary();
+
+    bookForm.reset();
+    dialog.close();
+});
