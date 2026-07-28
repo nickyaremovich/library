@@ -24,7 +24,7 @@ addBookToLibrary('East of Eden', 'John Steinbeck', 607, true);
 console.log(library);
 const libraryContainer = document.querySelector('#library-container');
 /// render library function 
-function renderLibrary() {
+/*function renderLibrary() {
     libraryContainer.innerHTML = '';
 
     library.forEach((book) => {
@@ -41,6 +41,42 @@ function renderLibrary() {
     `;
     libraryContainer.appendChild(bookCard);
     });
+};
+*/
+
+function renderLibrary() {
+    libraryContainer.textContent = '';
+
+    library.forEach((book) => {
+        const card = document.createElement('article');
+        const title = document.createElement('h4');
+        const author = document.createElement('p');
+        const pages = document.createElement('p');
+        const read = document.createElement('p');
+        const toggleRead = document.createElement('button');
+        const removeBtn = document.createElement('button');
+
+        title.textContent = book.title;
+        author.textContent = `Author: ${book.author}`;
+        pages.textContent = `Pages: ${book.pages}`;
+        read.textContent = book.read ? "Completed" : "Not read";
+        toggleRead.textContent = "toggle read";
+        removeBtn.textContent = "delete book";
+
+        toggleRead.dataset.id = book.id;
+        removeBtn.dataset.id = book.id;
+
+        card.append(
+            title,
+            author,
+            pages,
+            read,
+            toggleRead,
+            removeBtn
+        );
+        libraryContainer.append(card);
+    });
+
 };
 
 
@@ -80,3 +116,8 @@ bookForm.addEventListener("submit", (e) => {
     bookForm.reset();
     dialog.close();
 });
+
+/// remove book 
+function removeBook(id) {
+
+}
