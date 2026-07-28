@@ -119,5 +119,10 @@ bookForm.addEventListener("submit", (e) => {
 
 /// remove book 
 function removeBook(id) {
+    const index = library.findIndex((book) => book.id === id);
 
-}
+    if (index !== -1) {
+        library.splice(index, 1);
+    };
+        
+};
