@@ -35,26 +35,6 @@ addBookToLibrary('East of Eden', 'John Steinbeck', 607, true);
 // log to see library 
 console.log(library);
 const libraryContainer = document.querySelector('#library-container');
-/// render library function 
-/*function renderLibrary() {
-    libraryContainer.innerHTML = '';
-
-    library.forEach((book) => {
-        const bookCard = document.createElement('div');
-        bookCard.classList.add('book-card');
-        //attach crypto ID
-        bookCard.dataset.id = book.id;
-        //
-        bookCard.innerHTML = `
-        <h3>${book.title}</h3>
-        <p><strong>Author:</strong> ${book.author}</p>
-        <p><strong>Pages:</strong> ${book.pages}</p>
-        <p><strong>Status:</strong> ${book.read ? 'Read' : 'Not Read Yet'}</p>
-    `;
-    libraryContainer.appendChild(bookCard);
-    });
-};
-*/
 
 function renderLibrary() {
     libraryContainer.textContent = '';
@@ -65,28 +45,35 @@ function renderLibrary() {
         const author = document.createElement('p');
         const pages = document.createElement('p');
         const read = document.createElement('p');
+        const actions = document.createElement('div');
         const toggleRead = document.createElement('button');
         const removeBtn = document.createElement('button');
+
+        card.classList.add('book-card');
+        author.classList.add('book-detail');
+        pages.classList.add('book-detail');
+        read.classList.add('book-status', book.read ? 'is-read' : 'is-unread');
+        actions.classList.add('book-actions');
 
         title.textContent = book.title;
         author.textContent = `Author: ${book.author}`;
         pages.textContent = `Pages: ${book.pages}`;
         read.textContent = book.read ? "Completed" : "Not read";
-        toggleRead.textContent = "toggle read";
-        removeBtn.textContent = "delete book";
+        toggleRead.textContent = "Toggle read";
+        removeBtn.textContent = "Delete";
 
         toggleRead.dataset.id = book.id;
         toggleRead.classList.add('toggle-read');
         removeBtn.dataset.id = book.id;
         removeBtn.classList.add('remove-btn');
 
+        actions.append(toggleRead, removeBtn);
         card.append(
             title,
             author,
             pages,
             read,
-            toggleRead,
-            removeBtn
+            actions
         );
         libraryContainer.append(card);
     });
