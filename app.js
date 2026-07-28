@@ -42,7 +42,6 @@ function renderLibrary() {
     libraryContainer.appendChild(bookCard);
     });
 };
-renderLibrary(library);
 
 
 // DOM elements - library container
