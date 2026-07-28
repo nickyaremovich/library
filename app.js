@@ -9,7 +9,19 @@ function Book(title, author, pages, read) {
     this.read = read
     this.id = crypto.randomUUID();
 };
+// protoype function to toggle if read
 
+Book.prototype.toggleRead = function () {
+    this.read = !this.read;
+};
+//helper function 
+function toggleBookRead(id){
+    const book = library.find((book) => book.id === id);
+
+    if (book) {
+        book.toggleRead();
+    };
+};
 // add book to library function 
 function addBookToLibrary(title, author, pages, read) {
     const book = new Book(title, author, pages, read);
