@@ -22,7 +22,7 @@ addBookToLibrary('East of Eden', 'John Steinbeck', 607, true);
 
 // log to see library 
 console.log(library);
-
+const libraryContainer = document.querySelector('#library-container');
 /// render library function 
 function renderLibrary() {
     libraryContainer.innerHTML = '';
@@ -45,8 +45,7 @@ function renderLibrary() {
 renderLibrary(library);
 
 
-// DOM elements
-const libraryContainer = document.querySelector('#library-container');
+// DOM elements - library container
 const dialog = document.getElementById('addBookModal');
 const bookForm = document.getElementById('book-form');
 const addBook = document.getElementById('add-btn');
@@ -63,7 +62,10 @@ const cancelButton = document.getElementById('cancel');
 addBook.addEventListener('click', () => {
     dialog.showModal();
 });
-
+cancelButton.addEventListener('click', () => {
+    dialog.close();
+    bookForm.reset();
+});
 submit.addEventListener('click', () => {
     dialog.close();
 });
