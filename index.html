@@ -14,8 +14,26 @@
     <main>
         <div id="library-container"></div>
         <dialog id="addBookModal">
-            <p>Add a Book:</p>
-            <button id="submit">Submit</button>
+            <form id="book-form">
+                <label>
+                    Title:
+                    <input id="title" type="text" placeholder="The Count of Monte Cristo" required>
+                </label>
+                <label>
+                    Author:
+                    <input id="author" type="text" placeholder="Alexandre Dumas" required>
+                </label>
+                <label>
+                    Pages:
+                    <input id="pages" type="number" placeholder="1312" min="1" required>
+                </label>
+                <label>
+                    Read:
+                    <input type="checkbox" id="read" required>
+                </label>
+                <button id="cancel">Cancel</button>
+                <button id="submit">Add Book</button>
+            </form>
         </dialog>
     </main>
     <script src="app.js"></script>
