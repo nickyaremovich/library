@@ -150,7 +150,7 @@ libraryContainer.addEventListener('click', (event) => {
         renderLibrary();
     };
     if (event.target.classList.contains('toggle-read')) {
-        toggleBookRead();
+        toggleBookRead(id);
         renderLibrary();
     }
 });
