@@ -76,7 +76,9 @@ function renderLibrary() {
         removeBtn.textContent = "delete book";
 
         toggleRead.dataset.id = book.id;
+        toggleRead.classList.add('toggle-read');
         removeBtn.dataset.id = book.id;
+        removeBtn.classList.add('remove-btn');
 
         card.append(
             title,
@@ -138,3 +140,17 @@ function removeBook(id) {
     };
         
 };
+
+libraryContainer.addEventListener('click', (event) => {
+    const id = event.target.dataset.id;
+
+    if (!id) return;
+    if (event.target.classList.contains('remove-btn')) {
+        removeBook(id);
+        renderLibrary();
+    };
+    if (event.target.classList.contains('toggle-read')) {
+        toggleBookRead();
+        renderLibrary();
+    }
+});
