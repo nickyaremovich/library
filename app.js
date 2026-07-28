@@ -22,7 +22,7 @@ addBookToLibrary('East of Eden', 'John Steinbeck', 607, true);
 
 // log to see library 
 console.log(library);
-const libraryContainer = document.querySelector('#library-container');
+
 /// render library function 
 function renderLibrary() {
     libraryContainer.innerHTML = '';
@@ -46,9 +46,24 @@ renderLibrary(library);
 
 
 // DOM elements
+const libraryContainer = document.querySelector('#library-container');
+const dialog = document.getElementById('addBookModal');
+const bookForm = document.getElementById('book-form');
 const addBook = document.getElementById('add-btn');
+const submit = document.getElementById('submit');
+//DOM Inputs
+const titleInput = document.getElementById('title');
+const authorInput = document.getElementById('author');
+const pagesInput = document.getElementById('pages');
+const readInput = document.getElementById('read');
+//buttons
+const cancelButton = document.getElementById('cancel');
 
 // event listener to open book form. modal 
 addBook.addEventListener('click', () => {
-    console.log('Open add book form');
+    dialog.showModal();
+});
+
+submit.addEventListener('click', () => {
+    dialog.close();
 });
